@@ -1,3 +1,5 @@
+// Arduino controller of robotic arm
+// Pose sent as 18 chars, e.g. 090090090090090090
 #include <Servo.h>
 
 char inputString[19];   // 18 znaków + terminator '\0'
@@ -42,7 +44,7 @@ void loop() {
       numbers[i] = atoi(buf);
     }
     for (int i = 0; i < 6; i++) {
-      int angle = constrain(numbers[i], 0, 180);   // bezpieczeństwo
+      int angle = constrain(numbers[i], 0, 180);  
       servos[i].write(angle);
       Serial.print(angle);  
       Serial.print(' ');        
